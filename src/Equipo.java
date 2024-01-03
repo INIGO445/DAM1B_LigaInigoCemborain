@@ -47,6 +47,7 @@ public class Equipo {
             if(ListaJugadores[posicion] == null)
             {
                 ListaJugadores[posicion] = jugador;
+                break;
             }
         }
     }

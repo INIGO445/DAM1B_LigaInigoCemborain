@@ -57,9 +57,17 @@ public class Equipo {
         {
             if (ListaJugadores[posicion].getNombre() == nombreJugador)
             {
-                for(int borrar = posicion; borrar < ListaJugadores.length;borrar++)
+                for(int borrar = posicion; borrar < ListaJugadores.length; borrar++)
                 {
-                    ListaJugadores[borrar] = ListaJugadores[borrar + 1];
+                    if (borrar < 21)
+                    {
+                        ListaJugadores[borrar] = ListaJugadores[borrar + 1];
+                    }
+                    else if(borrar == 21)
+                    {
+                        ListaJugadores[posicion] = null;
+                    }
+
                 }
             }
         }

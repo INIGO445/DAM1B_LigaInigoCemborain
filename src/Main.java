@@ -76,19 +76,22 @@ public class Main {
         {
             System.out.println("El equipo está lleno.");
         }
-        System.out.println("Indique el nombre del jugador:");
-        String jugador = teclado.nextLine();
-        System.out.println("Indique la nacionalidad del jugador:");
-        String nacionalidad = teclado.nextLine();
-        System.out.println("Indique la edad del jugador:");
-        int edad = teclado.nextInt();
-        System.out.println("Indique la posición del jugador:");
-        String poscion = teclado.nextLine();
+        else
+        {
+            System.out.println("Indique el nombre del jugador:");
+            String jugador = teclado.nextLine();
+            System.out.println("Indique la nacionalidad del jugador:");
+            String nacionalidad = teclado.nextLine();
+            System.out.println("Indique la edad del jugador:");
+            int edad = teclado.nextInt();
+            System.out.println("Indique la posición del jugador:");
+            String poscion = teclado.nextLine();
         while (poscion != "POR" || poscion != "DEF" || poscion != "CTC" || poscion != "DEL")
         {
             System.out.println("Posición no valida");
             System.out.println("Inserte la posición del jugador:");
             poscion = teclado.nextLine();
+        }
         }
     }
     public static void VerLiga()
@@ -118,9 +121,13 @@ public class Main {
         if (nombre == null)
         {
             System.out.println("El jugador no existe.");
-            main();
         }
-        Equipo elEquipo = miLiga.getEquipo(equipo);
-        elEquipo.venderJugador(nombre);
+        else
+        {
+            Equipo elEquipo = miLiga.getEquipo(equipo);
+            System.out.println("Vendiendo jugador…");
+            elEquipo.venderJugador(nombre);
+            System.out.println("Jugador vendido.");
+        }
     }
 }

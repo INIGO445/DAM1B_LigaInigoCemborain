@@ -11,7 +11,7 @@ public class Main {
         String pais = teclado.nextLine();
         miLiga = new Liga(pais);
         int opcion = 1;
-        while (opcion !=6) {
+        while (opcion != 6) {
             System.out.println("MENU DE LA LIGA DE " + miLiga.getPais());
             System.out.println("1-  Insertar Equipo");
             System.out.println("2-  Insertar Jugador");
@@ -24,27 +24,27 @@ public class Main {
             {
                 insertarEquipo();
             }
-            if (opcion == 2)
+            else if (opcion == 2)
             {
                 insertarJugador();
             }
-            if (opcion == 3)
+            else if (opcion == 3)
             {
                 VerLiga();
             }
-            if (opcion == 4)
+            else if (opcion == 4)
             {
                 verJugadores();
             }
-            if (opcion == 5)
+            else if (opcion == 5)
             {
                 venderJugador();
             }
-            if (opcion == 6)
+            else if (opcion == 6)
             {
                 break;
             }
-            if (opcion < 1 || opcion > 6)
+            else
             {
                 System.out.println("Error, esta opcion no esta en la lista, Volviendo al menu...");
             }
@@ -67,9 +67,29 @@ public class Main {
     {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indique el nombre del equipo donde quiere insertar el jugador:");
-        String nombre = teclado.nextLine();
-
-
+        String elEquipo = teclado.nextLine();
+        if(elEquipo == null)
+        {
+            System.out.println("El equipo indicado no existe.");
+        }
+        else if (elEquipo == "lleno")
+        {
+            System.out.println("El equipo está lleno.");
+        }
+        System.out.println("Indique el nombre del jugador:");
+        String jugador = teclado.nextLine();
+        System.out.println("Indique la nacionalidad del jugador:");
+        String nacionalidad = teclado.nextLine();
+        System.out.println("Indique la edad del jugador:");
+        int edad = teclado.nextInt();
+        System.out.println("Indique la posición del jugador:");
+        String poscion = teclado.nextLine();
+        while (poscion != "POR" || poscion != "DEF" || poscion != "CTC" || poscion != "DEL")
+        {
+            System.out.println("Posición no valida");
+            System.out.println("Inserte la posición del jugador:");
+            poscion = teclado.nextLine();
+        }
     }
     public static void VerLiga()
     {
@@ -82,17 +102,25 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indique el equipo que quiere visualizar:");
         String equipo = teclado.nextLine();
-        System.out.println("Indique el nombre del jugador:");
-        String jugador = teclado.nextLine();
-        System.out.println("Indique la nacionalidad del jugador:");
-        String nacionalidad = teclado.nextLine();
-        System.out.println("Indique la edad del jugador:");
-        int edad = teclado.nextInt();
-        System.out.println("Indique la posición del jugador:");
-        String poscion = teclado.nextLine();
+        miLiga.getEquipo(equipo);
     }
     public static void venderJugador()
     {
-
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Inserte el nombre del equipo donde quiere vender el jugador:");
+        String equipo = teclado.nextLine();
+        if(equipo == null)
+        {
+            System.out.println("El equipo indicado no existe.");
+        }
+        System.out.println("Inserte el nombre del jugador:");
+        String nombre = teclado.nextLine();
+        if (nombre == null)
+        {
+            System.out.println("El jugador no existe.");
+            main();
+        }
+        Equipo elEquipo = miLiga.getEquipo(equipo);
+        elEquipo.venderJugador(nombre);
     }
 }

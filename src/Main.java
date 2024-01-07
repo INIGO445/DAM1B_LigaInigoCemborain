@@ -68,11 +68,12 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indique el nombre del equipo donde quiere insertar el jugador:");
         String elEquipo = teclado.nextLine();
-        if(elEquipo == null)
+        Equipo miEquipo = miLiga.getEquipo(elEquipo);
+        if(miEquipo.getNombre() == null)
         {
             System.out.println("El equipo indicado no existe.");
         }
-        else if (elEquipo == "lleno")
+        else if (miEquipo.getNumJugadores() >= 20)
         {
             System.out.println("El equipo está lleno.");
         }
@@ -86,12 +87,14 @@ public class Main {
             int edad = teclado.nextInt();
             System.out.println("Indique la posición del jugador:");
             String poscion = teclado.nextLine();
-        while (poscion != "POR" || poscion != "DEF" || poscion != "CTC" || poscion != "DEL")
-        {
-            System.out.println("Posición no valida");
-            System.out.println("Inserte la posición del jugador:");
-            poscion = teclado.nextLine();
-        }
+            while (poscion != "POR" || poscion != "DEF" || poscion != "CTC" || poscion != "DEL")
+            {
+                System.out.println("Posición no valida");
+                System.out.println("Inserte la posición del jugador:");
+                poscion = teclado.nextLine();
+            }
+            Jugador miJugador = new Jugador(jugador, nacionalidad, edad, poscion);
+            miEquipo.adquirirJugador(miJugador);
         }
     }
     public static void VerLiga()

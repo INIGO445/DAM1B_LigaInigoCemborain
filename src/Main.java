@@ -4,12 +4,12 @@ import java.util.Scanner;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    private static Liga[] miLiga;
+    private static Liga miLiga;
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Inserte el país de la liga:");
         String pais = teclado.nextLine();
-        Liga miLiga = new Liga(pais);
+        miLiga = new Liga(pais);
         int opcion = 1;
         while (opcion !=6) {
             System.out.println("MENU DE LA LIGA DE " + miLiga.getPais());
@@ -60,15 +60,8 @@ public class Main {
         System.out.println("Creando equipo…");
         Equipo miEquipo = new Equipo(nombre, ciudad);
         System.out.println("Insertando equipo…");
-        for (int posicion = 0;posicion<miLiga.length;posicion++)
-        {
-            if (miLiga[posicion] != null)
-            {
-                miLiga[posicion].anadirEquipo(miEquipo);
-            }
-        }
+        miLiga.anadirEquipo(miEquipo);
         System.out.println("Equipo " + nombre + " insertado");
-
     }
     public static void insertarJugador()
     {
@@ -82,7 +75,7 @@ public class Main {
     {
         System.out.println("**********COMPOSICIÓN DE LA LIGA*************************");
         System.out.println("Equipo\t\tCiudad\t\tNumero jugadores");
-        //miLiga.mostrarListadoEquipos();
+        miLiga.mostrarListadoEquipos();
     }
     public static void verJugadores()
     {

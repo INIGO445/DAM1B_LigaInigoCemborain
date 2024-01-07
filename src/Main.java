@@ -1,8 +1,10 @@
+import java.nio.file.WatchService;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
+    private static Liga[] miLiga;
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Inserte el país de la liga:");
@@ -10,7 +12,7 @@ public class Main {
         Liga miLiga = new Liga(pais);
         int opcion = 1;
         while (opcion !=6) {
-            System.out.println("MENU DE LA LIGA DE" + miLiga.getPais());
+            System.out.println("MENU DE LA LIGA DE " + miLiga.getPais());
             System.out.println("1-  Insertar Equipo");
             System.out.println("2-  Insertar Jugador");
             System.out.println("3-  Ver equipos de la liga");
@@ -50,32 +52,51 @@ public class Main {
     }
     public static void insertarEquipo()
     {
-        System.out.println("Inserte el Nombre del equipo");
         Scanner equipo = new Scanner(System.in);
+        System.out.println("Inserte el Nombre del equipo");
         String nombre = equipo.nextLine();
         System.out.println("Inserte la ciudad del equipo");
         String ciudad = equipo.nextLine();
         System.out.println("Creando equipo…");
         Equipo miEquipo = new Equipo(nombre, ciudad);
         System.out.println("Insertando equipo…");
-        miLiga.anadirEquipo(miEquipo);
+        for (int posicion = 0;posicion<miLiga.length;posicion++)
+        {
+            if (miLiga[posicion] != null)
+            {
+                miLiga[posicion].anadirEquipo(miEquipo);
+            }
+        }
         System.out.println("Equipo " + nombre + " insertado");
 
     }
     public static void insertarJugador()
     {
-        Scanner nombre = new Scanner(System.in);
+        Scanner teclado = new Scanner(System.in);
         System.out.println("Indique el nombre del equipo donde quiere insertar el jugador:");
+        String nombre = teclado.nextLine();
 
 
     }
     public static void VerLiga()
     {
-
+        System.out.println("**********COMPOSICIÓN DE LA LIGA*************************");
+        System.out.println("Equipo\t\tCiudad\t\tNumero jugadores");
+        //miLiga.mostrarListadoEquipos();
     }
     public static void verJugadores()
     {
-
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Indique el equipo que quiere visualizar:");
+        String equipo = teclado.nextLine();
+        System.out.println("Indique el nombre del jugador:");
+        String jugador = teclado.nextLine();
+        System.out.println("Indique la nacionalidad del jugador:");
+        String nacionalidad = teclado.nextLine();
+        System.out.println("Indique la edad del jugador:");
+        int edad = teclado.nextInt();
+        System.out.println("Indique la posición del jugador:");
+        String poscion = teclado.nextLine();
     }
     public static void venderJugador()
     {

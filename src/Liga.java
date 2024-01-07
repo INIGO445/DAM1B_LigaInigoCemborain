@@ -12,7 +12,7 @@ public class Liga {
     {
         for(int equipo = 0;equipo<listadoEquipos.length;equipo++)
         {
-            System.out.println(listadoEquipos[equipo]);
+            System.out.println(listadoEquipos[equipo].getNombre() + listadoEquipos[equipo].getCiudad() + listadoEquipos[equipo].getNumJugadores());
         }
     }
     public int getNumEquipos()

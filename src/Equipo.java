@@ -37,7 +37,16 @@ public class Equipo {
     {
         for (int posicion = 0;posicion < ListaJugadores.length;posicion++)
         {
-            System.out.println(ListaJugadores[posicion] + ", ");
+            String situacion = "";
+            if(ListaJugadores[posicion].getLesionado())
+            {
+                situacion = "SI";
+            }
+            else
+            {
+                situacion = "NO";
+            }
+            System.out.print(ListaJugadores[posicion].getNombre() + ListaJugadores[posicion].getPosicion() + ListaJugadores[posicion].getEdad() + ListaJugadores[posicion].getNacionalidad() + " " + situacion);
         }
     }
     public void adquirirJugador(Jugador jugador)

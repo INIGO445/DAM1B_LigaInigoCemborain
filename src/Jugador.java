@@ -32,6 +32,11 @@ public class Jugador {
     public String getPosicion() {
         return posicion;
     }
+
+    public boolean getLesionado() {
+        return lesionado;
+    }
+
     public void Lesionarse()
     {
         lesionado = true;

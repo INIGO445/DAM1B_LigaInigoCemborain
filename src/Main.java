@@ -52,16 +52,22 @@ public class Main {
     }
     public static void insertarEquipo()
     {
-        Scanner equipo = new Scanner(System.in);
-        System.out.println("Inserte el Nombre del equipo");
-        String nombre = equipo.nextLine();
-        System.out.println("Inserte la ciudad del equipo");
-        String ciudad = equipo.nextLine();
-        System.out.println("Creando equipo…");
-        Equipo miEquipo = new Equipo(nombre, ciudad);
-        System.out.println("Insertando equipo…");
-        miLiga.anadirEquipo(miEquipo);
-        System.out.println("Equipo " + nombre + " insertado");
+        if(miLiga.getNumEquipos() >= 20)
+        {
+            System.out.println("La liga está llena.");
+        }
+        else {
+            Scanner equipo = new Scanner(System.in);
+            System.out.println("Inserte el Nombre del equipo");
+            String nombre = equipo.nextLine();
+            System.out.println("Inserte la ciudad del equipo");
+            String ciudad = equipo.nextLine();
+            System.out.println("Creando equipo…");
+            Equipo miEquipo = new Equipo(nombre, ciudad);
+            System.out.println("Insertando equipo…");
+            miLiga.anadirEquipo(miEquipo);
+            System.out.println("Equipo " + nombre + " insertado");
+        }
     }
     public static void insertarJugador()
     {

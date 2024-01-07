@@ -36,6 +36,7 @@ public class Liga {
             if(listadoEquipos[nombre].getNombre() == nombreEquipo)
             {
                 ElNombre = listadoEquipos[nombre];
+                ElNombre.mostrarListaJugadores();
 
             }
         }

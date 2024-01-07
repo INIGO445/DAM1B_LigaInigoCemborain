@@ -12,7 +12,10 @@ public class Liga {
     {
         for(int equipo = 0;equipo<listadoEquipos.length;equipo++)
         {
-            System.out.println(listadoEquipos[equipo].getNombre() + "\t\t" + listadoEquipos[equipo].getCiudad() + "\t\t" + listadoEquipos[equipo].getNumJugadores());
+            if (listadoEquipos[equipo] != null)
+            {
+                System.out.println(listadoEquipos[equipo].getNombre() + "\t\t" + listadoEquipos[equipo].getCiudad() + "\t\t" + listadoEquipos[equipo].getNumJugadores());
+            }
         }
     }
     public int getNumEquipos()

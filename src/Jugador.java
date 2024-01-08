@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Jugador {
 
     private String nombre;
@@ -11,7 +13,7 @@ public class Jugador {
         nombre = nomJugador;
         nacionalidad = nacionalidadJug;
         edad = edadJug;
-        if (posicionJug == "POR" || posicionJug == "DEF" || posicionJug == "CTC" || posicionJug == "DEL")
+        if (Objects.equals(posicionJug, "POR") || Objects.equals(posicionJug, "DEF") || Objects.equals(posicionJug, "CTC") || Objects.equals(posicionJug, "DEL"))
         {
             posicion = posicionJug;
         }

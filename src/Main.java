@@ -10,7 +10,7 @@ public class Main {
         System.out.println("Inserte el país de la liga:");
         String pais = teclado.nextLine();
         miLiga = new Liga(pais);
-        int opcion = 1;
+        int opcion = 0;
         while (opcion != 6) {
             System.out.println("MENU DE LA LIGA DE " + miLiga.getPais());
             System.out.println("1-  Insertar Equipo");
@@ -75,7 +75,7 @@ public class Main {
         System.out.println("Indique el nombre del equipo donde quiere insertar el jugador:");
         String elEquipo = teclado.nextLine();
         Equipo miEquipo = miLiga.getEquipo(elEquipo);
-        if(miEquipo.getNombre() == null)
+        if(miEquipo.getNombre() != elEquipo)
         {
             System.out.println("El equipo indicado no existe.");
         }
@@ -114,14 +114,16 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indique el equipo que quiere visualizar:");
         String equipo = teclado.nextLine();
-        miLiga.getEquipo(equipo);
+        Equipo miEquipo = miLiga.getEquipo(equipo);
+        System.out.println(miEquipo);
     }
     public static void venderJugador()
     {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Inserte el nombre del equipo donde quiere vender el jugador:");
         String equipo = teclado.nextLine();
-        if(equipo == null)
+        Equipo miEquipo = miLiga.getEquipo(equipo);
+        if(miEquipo != null)
         {
             System.out.println("El equipo indicado no existe.");
         }

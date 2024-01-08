@@ -36,11 +36,10 @@ public class Liga {
         Equipo ElNombre = null;
         for (int nombre = 0;nombre< listadoEquipos.length;nombre++)
         {
-            if(listadoEquipos[nombre].getNombre() == nombreEquipo)
+            if(listadoEquipos[nombre].getNombre() == nombreEquipo && listadoEquipos[nombre] != null)
             {
                 ElNombre = listadoEquipos[nombre];
                 ElNombre.mostrarListaJugadores();
-
             }
         }
         System.out.println(ElNombre);

@@ -1,4 +1,5 @@
 import java.sql.ClientInfoStatus;
+import java.util.Objects;
 
 public class Equipo {
     private String nombre;
@@ -61,23 +62,19 @@ public class Equipo {
             }
         }
     }
-    public void venderJugador(String nombreJugador)
+    public void venderJugador(String nombreJugador)//Error
     {
         for (int posicion = 0;posicion < ListaJugadores.length;posicion++)
         {
-            if (ListaJugadores[posicion].getNombre() == nombreJugador)
-            {
-                for(int borrar = posicion; borrar < ListaJugadores.length; borrar++)
-                {
-                    if (borrar < 21)
-                    {
-                        ListaJugadores[borrar] = ListaJugadores[borrar + 1];
+            if (ListaJugadores[posicion] != null) {
+                if (Objects.equals(ListaJugadores[posicion].getNombre(), nombreJugador)) {
+                    for (int borrar = posicion; borrar < ListaJugadores.length; borrar++) {
+                        if (borrar < 21) {
+                            ListaJugadores[borrar] = ListaJugadores[borrar + 1];
+                        } else if (borrar == 21) {
+                            ListaJugadores[posicion] = null;
+                        }
                     }
-                    else if(borrar == 21)
-                    {
-                        ListaJugadores[posicion] = null;
-                    }
-
                 }
             }
         }

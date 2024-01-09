@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Liga {
     private String pais;
     private final int numMaxEqupos = 20;
@@ -36,10 +38,12 @@ public class Liga {
         Equipo ElNombre = null;
         for (int nombre = 0;nombre< listadoEquipos.length;nombre++)
         {
-            if(listadoEquipos[nombre].getNombre() == nombreEquipo && listadoEquipos[nombre] != null)
-            {
-                ElNombre = listadoEquipos[nombre];
-                ElNombre.mostrarListaJugadores();
+            if (listadoEquipos[nombre] != null) {
+                if (Objects.equals(listadoEquipos[nombre].getNombre(), nombreEquipo)) {
+                    ElNombre = listadoEquipos[nombre];
+                    ElNombre.mostrarListaJugadores();
+                    break;
+                }
             }
         }
         System.out.println(ElNombre);

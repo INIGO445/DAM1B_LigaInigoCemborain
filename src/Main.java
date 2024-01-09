@@ -1,4 +1,5 @@
 import java.nio.file.WatchService;
+import java.util.Objects;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -67,15 +68,16 @@ public class Main {
             System.out.println("Insertando equipo…");
             miLiga.anadirEquipo(miEquipo);
             System.out.println("Equipo " + nombre + " insertado");
+            Jugador miJugador = new Jugador("a","a",18,"DEL");
+            miEquipo.adquirirJugador(miJugador);
         }
     }
     public static void insertarJugador()
     {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Indique el nombre del equipo donde quiere insertar el jugador:");
-        String elEquipo = teclado.nextLine();
-        Equipo miEquipo = miLiga.getEquipo(elEquipo);
-        if(miEquipo.getNombre() != elEquipo)
+        Equipo miEquipo = miLiga.getEquipo(teclado.nextLine());
+        if(miEquipo == null)
         {
             System.out.println("El equipo indicado no existe.");
         }
@@ -93,13 +95,22 @@ public class Main {
             int edad = teclado.nextInt();
             System.out.println("Indique la posición del jugador:");
             String poscion = teclado.nextLine();
-            while (poscion != "POR" || poscion != "DEF" || poscion != "CTC" || poscion != "DEL")
+            System.out.println();
+            while (!Objects.equals(poscion, "POR") && !Objects.equals(poscion, "DEF") && !Objects.equals(poscion, "CTC") && !Objects.equals(poscion, "DEL"))
             {
-                System.out.println("Posición no valida");
-                System.out.println("Inserte la posición del jugador:");
                 poscion = teclado.nextLine();
+                if (!Objects.equals(poscion, "POR") && !Objects.equals(poscion, "DEF") && !Objects.equals(poscion, "CTC") && !Objects.equals(poscion, "DEL")) {
+                    System.out.println("Posición no valida");
+                    System.out.println("Inserte la posición del jugador:");
+                    poscion = teclado.nextLine();
+                }
+                else {
+                    break;
+                }
             }
+            System.out.println("Creando Jugador...");
             Jugador miJugador = new Jugador(jugador, nacionalidad, edad, poscion);
+            System.out.println("Insertando Jugador...");
             miEquipo.adquirirJugador(miJugador);
         }
     }
@@ -115,6 +126,7 @@ public class Main {
         System.out.println("Indique el equipo que quiere visualizar:");
         String equipo = teclado.nextLine();
         Equipo miEquipo = miLiga.getEquipo(equipo);
+        miEquipo.mostrarListaJugadores();
         System.out.println(miEquipo);
     }
     public static void venderJugador()
@@ -123,22 +135,24 @@ public class Main {
         System.out.println("Inserte el nombre del equipo donde quiere vender el jugador:");
         String equipo = teclado.nextLine();
         Equipo miEquipo = miLiga.getEquipo(equipo);
-        if(miEquipo != null)
+        if(miEquipo == null)
         {
             System.out.println("El equipo indicado no existe.");
         }
-        System.out.println("Inserte el nombre del jugador:");
-        String nombre = teclado.nextLine();
-        if (nombre == null)
-        {
-            System.out.println("El jugador no existe.");
-        }
         else
         {
-            Equipo elEquipo = miLiga.getEquipo(equipo);
-            System.out.println("Vendiendo jugador…");
-            elEquipo.venderJugador(nombre);
-            System.out.println("Jugador vendido.");
+            System.out.println("Inserte el nombre del jugador:");
+            String nombre = teclado.nextLine();
+            if (nombre == null)
+            {
+                System.out.println("El jugador no existe.");
+            }
+            else
+            {
+                System.out.println("Vendiendo jugador…");
+                miEquipo.venderJugador(nombre);
+                System.out.println("Jugador vendido.");
+            }
         }
     }
 }

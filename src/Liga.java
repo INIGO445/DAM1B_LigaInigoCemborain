@@ -30,7 +30,6 @@ public class Liga {
                 numeros ++;
             }
         }
-        System.out.println(numeros);
         return numeros;
     }
     public Equipo getEquipo(String nombreEquipo)

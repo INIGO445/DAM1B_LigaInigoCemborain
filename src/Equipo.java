@@ -31,7 +31,6 @@ public class Equipo {
                 cuantos ++;
             }
         }
-        System.out.println(cuantos);
         return cuantos;
     }
     public void mostrarListaJugadores()

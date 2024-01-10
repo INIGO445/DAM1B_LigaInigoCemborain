@@ -1,4 +1,3 @@
-import java.nio.file.WatchService;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -68,8 +67,6 @@ public class Main {
             System.out.println("Insertando equipo…");
             miLiga.anadirEquipo(miEquipo);
             System.out.println("Equipo " + nombre + " insertado");
-            Jugador miJugador = new Jugador("a","a",18,"DEL");
-            miEquipo.adquirirJugador(miJugador);
         }
     }
     public static void insertarJugador()
@@ -81,7 +78,7 @@ public class Main {
         {
             System.out.println("El equipo indicado no existe.");
         }
-        else if (miEquipo.getNumJugadores() >= 20)
+        else if (miEquipo.getNumJugadores() >= 22)
         {
             System.out.println("El equipo está lleno.");
         }
@@ -95,7 +92,6 @@ public class Main {
             int edad = teclado.nextInt();
             System.out.println("Indique la posición del jugador:");
             String poscion = teclado.nextLine();
-            System.out.println();
             while (!Objects.equals(poscion, "POR") && !Objects.equals(poscion, "DEF") && !Objects.equals(poscion, "CTC") && !Objects.equals(poscion, "DEL"))
             {
                 poscion = teclado.nextLine();
@@ -119,6 +115,7 @@ public class Main {
         System.out.println("**********COMPOSICIÓN DE LA LIGA*************************");
         System.out.println("Equipo\t\tCiudad\t\tNumero jugadores");
         miLiga.mostrarListadoEquipos();
+        System.out.println("*********************************************************");
     }
     public static void verJugadores()
     {
@@ -126,8 +123,17 @@ public class Main {
         System.out.println("Indique el equipo que quiere visualizar:");
         String equipo = teclado.nextLine();
         Equipo miEquipo = miLiga.getEquipo(equipo);
-        miEquipo.mostrarListaJugadores();
-        System.out.println(miEquipo);
+        if (miEquipo == null)
+        {
+            System.out.println("El equipo indicado no existe.");
+        }
+        else
+        {
+            System.out.println("*********" + miEquipo.getNombre() + "****************************");
+            System.out.println("NOMBRE\t\t" + "POSICIÓN\t\t" + "EDAD\t" + "NAC\t\t\t" + "LESIONADO");
+            miEquipo.mostrarListaJugadores();
+            System.out.println("*********************************************");
+        }
     }
     public static void venderJugador()
     {
@@ -143,16 +149,7 @@ public class Main {
         {
             System.out.println("Inserte el nombre del jugador:");
             String nombre = teclado.nextLine();
-            if (nombre == null)
-            {
-                System.out.println("El jugador no existe.");
-            }
-            else
-            {
-                System.out.println("Vendiendo jugador…");
-                miEquipo.venderJugador(nombre);
-                System.out.println("Jugador vendido.");
-            }
+            miEquipo.venderJugador(nombre);
         }
     }
 }

@@ -45,7 +45,7 @@ public class Equipo {
                     situacion = "NO";
                 }
                 if (ListaJugadores[posicion] != null) {
-                    System.out.print(ListaJugadores[posicion].getNombre() + ListaJugadores[posicion].getPosicion() + ListaJugadores[posicion].getEdad() + ListaJugadores[posicion].getNacionalidad() + " " + situacion);
+                    System.out.println(ListaJugadores[posicion].getNombre() + "\t\t" + ListaJugadores[posicion].getPosicion() + "\t\t\t\t" + ListaJugadores[posicion].getEdad() + "\t\t" + ListaJugadores[posicion].getNacionalidad() + "\t\t" + situacion);
                 }
             }
         }
@@ -66,14 +66,24 @@ public class Equipo {
         for (int posicion = 0;posicion < ListaJugadores.length;posicion++)
         {
             if (ListaJugadores[posicion] != null) {
-                if (Objects.equals(ListaJugadores[posicion].getNombre(), nombreJugador)) {
-                    for (int borrar = posicion; borrar < ListaJugadores.length; borrar++) {
-                        if (borrar < 21) {
+                if (Objects.equals(ListaJugadores[posicion].getNombre(), nombreJugador))
+                {
+                    for (int borrar = posicion; borrar < ListaJugadores.length; borrar++)
+                    {
+                        if (borrar < 21)
+                        {
                             ListaJugadores[borrar] = ListaJugadores[borrar + 1];
-                        } else if (borrar == 21) {
+                        } else if (borrar == 21)
+                        {
                             ListaJugadores[posicion] = null;
                         }
                     }
+                    System.out.println("Vendiendo jugador…");
+                    System.out.println("Jugador vendido.");
+                }
+                else
+                {
+                    System.out.println("El jugador no existe.");
                 }
             }
         }

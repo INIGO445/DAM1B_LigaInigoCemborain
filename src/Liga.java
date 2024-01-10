@@ -40,12 +40,10 @@ public class Liga {
             if (listadoEquipos[nombre] != null) {
                 if (Objects.equals(listadoEquipos[nombre].getNombre(), nombreEquipo)) {
                     ElNombre = listadoEquipos[nombre];
-                    ElNombre.mostrarListaJugadores();
                     break;
                 }
             }
         }
-        System.out.println(ElNombre);
         return ElNombre;
     }
 

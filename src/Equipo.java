@@ -44,9 +44,7 @@ public class Equipo {
                 } else {
                     situacion = "NO";
                 }
-                if (ListaJugadores[posicion] != null) {
-                    System.out.println(ListaJugadores[posicion].getNombre() + "\t\t" + ListaJugadores[posicion].getPosicion() + "\t\t\t\t" + ListaJugadores[posicion].getEdad() + "\t\t" + ListaJugadores[posicion].getNacionalidad() + "\t\t" + situacion);
-                }
+                System.out.println(ListaJugadores[posicion].getNombre() + "\t\t" + ListaJugadores[posicion].getPosicion() + "\t\t\t\t" + ListaJugadores[posicion].getEdad() + "\t\t" + ListaJugadores[posicion].getNacionalidad() + "\t\t" + situacion);
             }
         }
     }

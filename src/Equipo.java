@@ -78,10 +78,10 @@ public class Equipo {
                     System.out.println("Vendiendo jugador…");
                     System.out.println("Jugador vendido.");
                 }
-                else
-                {
-                    System.out.println("El jugador no existe.");
-                }
+            }
+            else
+            {
+                System.out.println("El jugador no existe.");
             }
         }
     }

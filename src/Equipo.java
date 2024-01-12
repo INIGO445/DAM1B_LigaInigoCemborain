@@ -67,21 +67,23 @@ public class Equipo {
                 {
                     for (int borrar = posicion; borrar < ListaJugadores.length; borrar++)
                     {
-                        if (borrar < ListaJugadores.length -1)
+                        if (borrar < 21)
                         {
                             ListaJugadores[borrar] = ListaJugadores[borrar + 1];
-                        } else if (borrar == ListaJugadores.length -1)
+                        } else if (borrar == 21)
                         {
                             ListaJugadores[posicion] = null;
+                            System.out.println("Vendiendo jugador…");
+                            System.out.println("Jugador vendido.");
                         }
                     }
-                    System.out.println("Vendiendo jugador…");
-                    System.out.println("Jugador vendido.");
+                    break;
                 }
             }
-            else
+            else if (posicion >= ListaJugadores.length-1)
             {
                 System.out.println("El jugador no existe.");
+                break;
             }
         }
     }

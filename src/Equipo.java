@@ -75,15 +75,14 @@ public class Equipo {
                             ListaJugadores[posicion] = null;
                             System.out.println("Vendiendo jugador…");
                             System.out.println("Jugador vendido.");
+                            posicion = ListaJugadores.length;
                         }
                     }
-                    break;
                 }
-            }
-            else if (posicion >= ListaJugadores.length-1)
-            {
-                System.out.println("El jugador no existe.");
-                break;
+                else if (posicion >= ListaJugadores.length-1 && !Objects.equals(ListaJugadores[posicion].getNombre(), nombreJugador))
+                {
+                    System.out.println("El jugador no existe.");
+                }
             }
         }
     }
